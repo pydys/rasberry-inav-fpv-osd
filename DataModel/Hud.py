@@ -2,8 +2,8 @@ class Hud:
     def __init__(self):
         pass
 
-    altitude = 0
-    angx = 0
-    angy = 0
+    altitude = 10
+    angx = 20
+    angy = 10
     heading = 350
     speed = 45
