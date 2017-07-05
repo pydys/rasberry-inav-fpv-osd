@@ -6,33 +6,19 @@ import time
 
 import cv2
 
+from Connector.MspConnector import MspConnector
 from DataModel.Hud import Hud
 from Draw.Pitch import Pitch
 from Draw.PlaneSymbol import PlaneSymbol
-from lib.pyMultiwii import MultiWii
 
 cap = cv2.VideoCapture(0)
 frameNumber = numpy.int64(0)
 start = time.time()
-
-serialPort = "/dev/ttyACM0"
-board = MultiWii(serialPort)
-
-attitude = {'angx': 0, 'angy': 0, 'heading': 0, 'elapsed': 0, 'timestamp': 0}
-
 color = (0, 255, 0)
-
 hud = Hud()
+msp = MspConnector("/dev/ttyACM0", hud)
 
 while True:
-
-    print board.getData(MultiWii.ALTITUDE)
-    attitudeNew = board.getData(MultiWii.ATTITUDE)
-    if isinstance(attitudeNew, dict):
-        attitude = attitudeNew
-
-    print attitude
-
     frameNumber += 1
     # Capture frame-by-frame
     ret, img = cap.read()

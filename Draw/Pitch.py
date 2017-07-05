@@ -14,30 +14,21 @@ class Pitch:
     @staticmethod
     def draw(img, hud, color):
 
-        pitch_line_offset = int(hud.angy * 7)
+        pitch_line_offset = int(hud.ang_y * 7)
         img_width = img.shape[1]
         img_height = img.shape[0]
         center_point = (img_width // 2, img_height // 2)
 
         cv2.rectangle(img, Pitch.drawing_area[0], Pitch.drawing_area[1], color, 1, cv2.CV_AA)
 
-        Pitch.child_line(img, color, pitch_line_offset, hud.angx, 50)
-        Pitch.child_line(img, color, pitch_line_offset, hud.angx, 40)
-        Pitch.child_line(img, color, pitch_line_offset, hud.angx, 30)
-        Pitch.child_line(img, color, pitch_line_offset, hud.angx, 20)
-        Pitch.child_line(img, color, pitch_line_offset, hud.angx, 10)
-        Pitch.child_line(img, color, pitch_line_offset, hud.angx, 0)
-        Pitch.child_line(img, color, pitch_line_offset, hud.angx, -10)
-        Pitch.child_line(img, color, pitch_line_offset, hud.angx, -20)
-        Pitch.child_line(img, color, pitch_line_offset, hud.angx, -30)
-        Pitch.child_line(img, color, pitch_line_offset, hud.angx, -40)
-        Pitch.child_line(img, color, pitch_line_offset, hud.angx, -50)
+        for i in range(-50, 50, 10):
+            Pitch.child_line(img, color, pitch_line_offset, hud.ang_x, i)
 
         font = cv2.FONT_HERSHEY_PLAIN
         cv2.putText(img, "roll: ", (25, 60), font, 1, color, 1, cv2.CV_AA)
-        cv2.putText(img, "{:4.1f}".format(hud.angx).rjust(10), (40, 60), font, 1, color, 1, cv2.CV_AA)
+        cv2.putText(img, "{:4.1f}".format(hud.ang_x).rjust(10), (40, 60), font, 1, color, 1, cv2.CV_AA)
         cv2.putText(img, "pitch:", (15, 75), font, 1, color, 1, cv2.CV_AA)
-        cv2.putText(img, "{:4.1f}".format(hud.angy).rjust(10), (40, 75), font, 1, color, 1, cv2.CV_AA)
+        cv2.putText(img, "{:4.1f}".format(hud.ang_y).rjust(10), (40, 75), font, 1, color, 1, cv2.CV_AA)
         cv2.putText(img, "head: ", (20, 90), font, 1, color, 1, cv2.CV_AA)
         cv2.putText(img, "{:4.1f}".format(hud.heading).rjust(10), (38, 90), font, 1, color, 1, cv2.CV_AA)
 

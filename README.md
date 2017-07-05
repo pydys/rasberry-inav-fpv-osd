@@ -1,2 +1,7 @@
 # rasberry-inav-fpv-osd
-simple Python library witch allows to render graphical OSD using raspberry pi provided with data form Flight Controller using MSP serial port
+Simple Python2.4 library rendering graphical FPV OSD using raspberry pi provided with data form Flight Controller using MSP serial port
+
+
+
+![Screenshot](resources/img/osd_1.png)
+
