@@ -8,8 +8,10 @@ import cv2
 
 from Connector.MspConnector import MspConnector
 from DataModel.Hud import Hud
+from Draw.Altitude import Altitude
 from Draw.Pitch import Pitch
 from Draw.PlaneSymbol import PlaneSymbol
+from Draw.Speed import Speed
 
 cap = cv2.VideoCapture(0)
 frameNumber = numpy.int64(0)
@@ -31,6 +33,12 @@ while True:
 
     # Draw a pich line
     Pitch.draw(img, hud, color)
+
+    # Altitude a pich line
+    Altitude.draw(img, hud, color)
+
+    # Speed a pich line
+    Speed.draw(img, hud, color)
 
     # End time
     end = time.time()

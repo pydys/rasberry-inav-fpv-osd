@@ -30,8 +30,9 @@ class MspConnector:
             if isinstance(altitude_new, dict):
                 self.lock.acquire()
                 try:
-                    self.hud.vertical_speed = altitude_new['vario']
-                    self.hud.est_alt = altitude_new['estalt']
+                    self.hud.vertical_speed = float(altitude_new['vario'] // 10) / 10
+                    self.hud.est_alt = float(altitude_new['estalt'] // 10) / 10
+                    self.hud.bar_alt = float(altitude_new['baralt'] // 10) / 10
                 finally:
                     self.lock.release()
             sleep(0.05)

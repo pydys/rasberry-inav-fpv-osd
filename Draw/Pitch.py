@@ -21,7 +21,7 @@ class Pitch:
 
         cv2.rectangle(img, Pitch.drawing_area[0], Pitch.drawing_area[1], color, 1, cv2.CV_AA)
 
-        for i in range(-50, 50, 10):
+        for i in range(-90, 90, 10):
             Pitch.child_line(img, color, pitch_line_offset, hud.ang_x, i)
 
         font = cv2.FONT_HERSHEY_PLAIN
